@@ -4,18 +4,16 @@ import {
 	interpolate,
 	random,
 	spring,
-	useCurrentFrame,
-	useVideoConfig,
 	Easing,
 } from 'remotion';
-import {anton, C, mont, SAFE, ZONE_LOW, ZONE_TOP} from './theme';
+import {anton, C, mont, SAFE, useF, ZONE_LOW, ZONE_TOP} from './theme';
 import {WORDS} from './words';
 
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 
 const useSpring = (start: number, cfg: object = {damping: 12, stiffness: 180, mass: 0.6}) => {
-	const f = useCurrentFrame();
-	const {fps} = useVideoConfig();
+	const f = useF();
+	const fps = 30;
 	return spring({frame: f - start, fps, config: cfg});
 };
 
@@ -31,7 +29,7 @@ const Price: React.FC<{
 	parkAt: number; // when it shrinks into the "already crossed" row
 	parkX: number;
 }> = ({label, inAt, strikeAt, parkAt, parkX}) => {
-	const f = useCurrentFrame();
+	const f = useF();
 	const slam = useSpring(inAt, {damping: 10, stiffness: 260, mass: 0.5});
 	const park = useSpring(parkAt, {damping: 16, stiffness: 160});
 	if (f < inAt) return null;
@@ -83,7 +81,7 @@ const Price: React.FC<{
 };
 
 const Stamp: React.FC<{at: number}> = ({at}) => {
-	const f = useCurrentFrame();
+	const f = useF();
 	const s = useSpring(at, {damping: 9, stiffness: 300, mass: 0.6});
 	if (f < at) return null;
 	return (
@@ -111,7 +109,7 @@ const Stamp: React.FC<{at: number}> = ({at}) => {
 };
 
 export const PriceHook: React.FC = () => {
-	const f = useCurrentFrame();
+	const f = useF();
 	const exit = interpolate(f, [114, 121], [0, 1], clamp);
 	return (
 		<AbsoluteFill
@@ -132,7 +130,7 @@ export const PriceHook: React.FC = () => {
 /* ---------------------------------------------------------------- TITLE */
 
 export const TitleCard: React.FC<{from: number; to: number}> = ({from, to}) => {
-	const f = useCurrentFrame();
+	const f = useF();
 	const by = useSpring(from + 46);
 	if (f < from || f > to) return null;
 	const local = f - from;
@@ -275,8 +273,8 @@ const HL: Record<string, string> = {
 };
 
 export const Captions: React.FC = () => {
-	const f = useCurrentFrame();
-	const {fps} = useVideoConfig();
+	const f = useF();
+	const fps = 30;
 	const LEAD = 2; // show words a hair early (feels in-sync on phones)
 	const pageIdx = PAGES.findIndex(([a], i) => {
 		const start = WORDS[a].s - LEAD;
@@ -369,7 +367,7 @@ const Pill: React.FC<{
 	fromX?: number;
 	rotate?: number;
 }> = ({at, until, x, children, bg, color = C.black, fromX = 0, rotate = 0}) => {
-	const f = useCurrentFrame();
+	const f = useF();
 	const s = useSpring(at, {damping: 11, stiffness: 220, mass: 0.5});
 	if (f < at || f > until) return null;
 	const o = outT(f, until);
@@ -403,7 +401,7 @@ const Pill: React.FC<{
 };
 
 export const PromoStickers: React.FC = () => {
-	const f = useCurrentFrame();
+	const f = useF();
 	// checkout button press
 	const press = interpolate(f, [309, 312, 316], [1, 0.9, 1], clamp);
 	const ripple = interpolate(f, [310, 326], [0, 1], clamp);
@@ -484,7 +482,7 @@ export const PromoStickers: React.FC = () => {
 /* ---------------------------------------------------------------- SCENT CHIPS */
 
 const Chip: React.FC<{at: number; x: number; label: string}> = ({at, x, label}) => {
-	const f = useCurrentFrame();
+	const f = useF();
 	const s = useSpring(at, {damping: 10, stiffness: 260, mass: 0.5});
 	if (f < at) return null;
 	const o = outT(f, 474);
@@ -540,7 +538,7 @@ export const ScentChips: React.FC = () => (
 /* ---------------------------------------------------------------- CTA */
 
 export const CtaStickers: React.FC = () => {
-	const f = useCurrentFrame();
+	const f = useF();
 	// Simple, clean CTA: one pill, gentle fade/slide in, no extra motion.
 	const t = interpolate(f, [477, 487], [0, 1], {...clamp, easing: Easing.out(Easing.cubic)});
 	if (f < 477) return null;
@@ -583,7 +581,7 @@ export const Flash: React.FC<{at: number; color?: string; len?: number; strength
 	len = 8,
 	strength = 0.85,
 }) => {
-	const f = useCurrentFrame();
+	const f = useF();
 	const o = interpolate(f, [at, at + 1, at + len], [0, strength, 0], clamp);
 	if (o <= 0) return null;
 	return (
@@ -598,7 +596,7 @@ export const Flash: React.FC<{at: number; color?: string; len?: number; strength
 
 /** Ice dust drifting up along the edges only (never over the product). */
 export const FrostDust: React.FC = () => {
-	const f = useCurrentFrame();
+	const f = useF();
 	const boost = interpolate(f, [119, 128, 178, 200], [0.35, 1, 1, 0.35], clamp);
 	const N = 34;
 	return (
@@ -633,7 +631,7 @@ export const FrostDust: React.FC = () => {
 
 /** Frosted corners during the product reveal (edges only). */
 export const FrostFrame: React.FC = () => {
-	const f = useCurrentFrame();
+	const f = useF();
 	const o = interpolate(f, [119, 126, 172, 184], [0, 1, 1, 0], clamp);
 	if (o <= 0) return null;
 	return (

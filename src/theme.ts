@@ -1,5 +1,5 @@
 import {loadFont} from '@remotion/fonts';
-import {staticFile} from 'remotion';
+import {staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 
 export const anton = 'Anton';
 export const mont = 'Montserrat';
@@ -7,7 +7,15 @@ export const mont = 'Montserrat';
 loadFont({family: anton, url: staticFile('fonts/Anton.woff2'), weight: '400'});
 loadFont({family: mont, url: staticFile('fonts/Montserrat.woff2'), weight: '100 900'});
 
-export const FPS = 30;
+export const FPS = 60;
+// All animation timings are authored in 30fps "beats"; this maps any render fps onto them.
+export const BASE_FPS = 30;
+export const useF = () => {
+	const frame = useCurrentFrame();
+	const {fps} = useVideoConfig();
+	return frame / (fps / BASE_FPS);
+};
+export const useR = () => useVideoConfig().fps / BASE_FPS;
 export const W = 1080;
 export const H = 1920;
 

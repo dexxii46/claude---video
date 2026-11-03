@@ -7,8 +7,6 @@ import {
 	Sequence,
 	spring,
 	staticFile,
-	useCurrentFrame,
-	useVideoConfig,
 } from 'remotion';
 import {
 	Captions,
@@ -25,6 +23,7 @@ import {
 	Vignette,
 } from './Graphics';
 import {SEGMENTS, TOTAL} from './words';
+import {useF, useR} from './theme';
 
 /** Punch-in zoom keyframes [frame, scale]. Origin is the product centre so it never leaves frame. */
 const ZOOMS: [number, number][] = [
@@ -40,8 +39,8 @@ const ZOOMS: [number, number][] = [
 ];
 
 const useZoom = () => {
-	const f = useCurrentFrame();
-	const {fps} = useVideoConfig();
+	const f = useF();
+	const fps = 30;
 	let scale = ZOOMS[0][1];
 	for (let i = 1; i < ZOOMS.length; i++) {
 		const [kf, target] = ZOOMS[i];
@@ -59,7 +58,7 @@ const useZoom = () => {
 };
 
 const useShake = () => {
-	const f = useCurrentFrame();
+	const f = useF();
 	const hits = [8, 43, 73, 104];
 	let x = 0;
 	let y = 0;
@@ -103,7 +102,7 @@ const SFX: Sfx[] = [
 ];
 
 const Music: React.FC = () => {
-	const f = useCurrentFrame();
+	const f = useF();
 	// Voice is -14 LUFS, BGM normalised to -14 LUFS → ~0.14 sits it ~17dB under the voice.
 	const vol = interpolate(f, [0, 4, 600, 606, TOTAL - 1], [0.0, 0.14, 0.14, 0.32, 0.32], {
 		extrapolateLeft: 'clamp',
@@ -115,6 +114,7 @@ const Music: React.FC = () => {
 export const BlackIce: React.FC<{showSafeZone: boolean}> = ({showSafeZone}) => {
 	const scale = useZoom();
 	const shake = useShake();
+	const R = useR();
 	return (
 		<AbsoluteFill style={{backgroundColor: '#000'}}>
 			{/* FOOTAGE (jump-cut segments) */}
@@ -126,8 +126,8 @@ export const BlackIce: React.FC<{showSafeZone: boolean}> = ({showSafeZone}) => {
 				}}
 			>
 				{SEGMENTS.map((s) => (
-					<Sequence key={s.at} from={s.at} durationInFrames={s.to - s.from}>
-						<OffthreadVideo src={staticFile('source.mp4')} trimBefore={s.from} muted />
+					<Sequence key={s.at} from={s.at * R} durationInFrames={(s.to - s.from) * R}>
+						<OffthreadVideo src={staticFile('source.mp4')} trimBefore={s.from * R} muted />
 					</Sequence>
 				))}
 			</AbsoluteFill>
@@ -139,7 +139,7 @@ export const BlackIce: React.FC<{showSafeZone: boolean}> = ({showSafeZone}) => {
 			<FrostDust />
 
 			{/* GRAPHICS */}
-			<Sequence durationInFrames={122}>
+			<Sequence durationInFrames={122 * R}>
 				<PriceHook />
 			</Sequence>
 			<TitleCard from={121} to={184} />
@@ -161,7 +161,7 @@ export const BlackIce: React.FC<{showSafeZone: boolean}> = ({showSafeZone}) => {
 			<Audio src={staticFile('voice.wav')} volume={1} />
 			<Music />
 			{SFX.map(([at, name, vol], i) => (
-				<Sequence key={i} from={at} durationInFrames={Math.min(150, TOTAL - at)}>
+				<Sequence key={i} from={at * R} durationInFrames={Math.min(150, TOTAL - at) * R}>
 					<Audio src={staticFile(`sfx/${name}.wav`)} volume={vol * SFX_GAIN} />
 				</Sequence>
 			))}
