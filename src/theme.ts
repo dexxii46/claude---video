@@ -1,11 +1,12 @@
 import {loadFont} from '@remotion/fonts';
-import {staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {useCurrentFrame, useVideoConfig} from 'remotion';
+import {ANTON_WOFF2, MONT_WOFF2} from './fontData';
 
 export const anton = 'Anton';
 export const mont = 'Montserrat';
 
-loadFont({family: anton, url: staticFile('fonts/Anton.woff2'), weight: '400'});
-loadFont({family: mont, url: staticFile('fonts/Montserrat.woff2'), weight: '100 900'});
+loadFont({family: anton, url: ANTON_WOFF2, format: 'woff2', weight: '400'});
+loadFont({family: mont, url: MONT_WOFF2, format: 'woff2', weight: '100 900'});
 
 export const FPS = 60;
 // All animation timings are authored in 30fps "beats"; this maps any render fps onto them.

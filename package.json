@@ -3,8 +3,8 @@
   "private": true,
   "scripts": {
     "studio": "remotion studio",
-    "preview": "remotion render BlackIce out/preview.mp4 --scale=0.5 --crf=26 --timeout=120000",
-    "render": "remotion render BlackIce out/final.mp4 --crf=16 --timeout=120000"
+    "preview": "remotion render BlackIce out/preview.mp4 --scale=0.5 --crf=26 --concurrency=2 --timeout=120000",
+    "render": "remotion render BlackIce out/final.mp4 --crf=16 --concurrency=2 --timeout=120000"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.500",
