@@ -1,12 +1,24 @@
-import {loadFont} from '@remotion/fonts';
-import {useCurrentFrame, useVideoConfig} from 'remotion';
+import {continueRender, delayRender, useCurrentFrame, useVideoConfig} from 'remotion';
 import {ANTON_WOFF2, MONT_WOFF2} from './fontData';
 
 export const anton = 'Anton';
 export const mont = 'Montserrat';
 
-loadFont({family: anton, url: ANTON_WOFF2, format: 'woff2', weight: '400'});
-loadFont({family: mont, url: MONT_WOFF2, format: 'woff2', weight: '100 900'});
+// Plain @font-face from embedded data URLs. The render waits (max 5s) for the
+// faces to be ready, but never blocks forever if the browser doesn't report back.
+if (typeof document !== 'undefined' && !document.getElementById('bi-fonts')) {
+	const style = document.createElement('style');
+	style.id = 'bi-fonts';
+	style.textContent = `
+@font-face{font-family:'Anton';src:url(${ANTON_WOFF2}) format('woff2');font-weight:400;font-display:block}
+@font-face{font-family:'Montserrat';src:url(${MONT_WOFF2}) format('woff2');font-weight:100 900;font-display:block}`;
+	document.head.appendChild(style);
+	const handle = delayRender('Loading embedded fonts', {timeoutInMilliseconds: 30000});
+	Promise.race([
+		Promise.all([document.fonts.load('400 40px Anton'), document.fonts.load('900 40px Montserrat')]),
+		new Promise((r) => setTimeout(r, 5000)),
+	]).finally(() => continueRender(handle));
+}
 
 export const FPS = 60;
 // All animation timings are authored in 30fps "beats"; this maps any render fps onto them.
