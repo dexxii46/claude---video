@@ -298,7 +298,7 @@ export const Captions: React.FC = () => {
 				display: 'flex',
 				flexWrap: 'wrap',
 				justifyContent: 'center',
-				gap: '4px 22px',
+				gap: '2px 16px',
 				transform: `scale(${interpolate(enter, [0, 1], [0.8, 1])}) translateY(${(1 - enter) * 20}px)`,
 				opacity: enter,
 			}}
@@ -314,13 +314,13 @@ export const Captions: React.FC = () => {
 						style={{
 							fontFamily: mont,
 							fontWeight: 900,
-							fontSize: 84,
-							lineHeight: 1.08,
+							fontSize: 64,
+							lineHeight: 1.1,
 							textTransform: 'uppercase',
 							color: active ? hl ?? C.white : 'rgba(255,255,255,0.55)',
 							transform: `scale(${active ? 1 + 0.12 * (1 - pop) + (isNow ? 0.04 : 0) : 0.96})`,
 							display: 'inline-block',
-							WebkitTextStroke: '10px #000',
+							WebkitTextStroke: '8px #000',
 							paintOrder: 'stroke fill',
 							textShadow: '0 8px 18px rgba(0,0,0,0.55)',
 						}}
@@ -541,128 +541,36 @@ export const ScentChips: React.FC = () => (
 
 export const CtaStickers: React.FC = () => {
 	const f = useCurrentFrame();
-	const s = useSpring(476, {damping: 11, stiffness: 200});
-	const bounce = Math.sin((f - 476) / 3.2) * 10;
-	const voucher = useSpring(519, {damping: 12, stiffness: 200, mass: 0.6});
-	const stock = interpolate(f, [580, 606], [0.62, 0.08], {...clamp, easing: Easing.inOut(Easing.cubic)});
-	const showStock = f >= 578;
-	const stockIn = useSpring(578, {damping: 12, stiffness: 220});
-	const pulse = 1 + Math.max(0, Math.sin((f - 578) / 2.2)) * 0.03;
-	if (f < 476) return null;
+	// Simple, clean CTA: one pill, gentle fade/slide in, no extra motion.
+	const t = interpolate(f, [477, 487], [0, 1], {...clamp, easing: Easing.out(Easing.cubic)});
+	if (f < 477) return null;
 	return (
 		<AbsoluteFill>
-			{/* Down arrows toward the product link (bottom-left on TikTok/IG) */}
 			<div
 				style={{
 					position: 'absolute',
-					left: SAFE.left + 10,
-					top: ZONE_LOW.y - 8 + bounce,
+					left: SAFE.left + 20,
+					top: ZONE_LOW.y,
+					height: ZONE_LOW.h - 6,
 					display: 'flex',
-					flexDirection: 'column',
 					alignItems: 'center',
-					transform: `scale(${s})`,
-					opacity: s,
+					gap: 14,
+					padding: '0 30px 0 16px',
+					background: C.yellow,
+					color: C.black,
+					borderRadius: 26,
+					fontFamily: mont,
+					fontWeight: 900,
+					fontSize: 40,
+					whiteSpace: 'nowrap',
+					boxShadow: '0 10px 26px rgba(0,0,0,0.4)',
+					opacity: t,
+					transform: `translateY(${(1 - t) * 24}px)`,
 				}}
 			>
-				{[0, 1].map((i) => (
-					<svg
-						key={i}
-						width={92}
-						height={54}
-						viewBox="0 0 92 54"
-						style={{
-							marginTop: i ? -14 : 0,
-							opacity: 0.45 + 0.55 * ((Math.sin((f - 476) / 3 - i * 1.4) + 1) / 2),
-							filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.6))',
-						}}
-					>
-						<path d="M8 8 L46 44 L84 8" stroke={C.yellow} strokeWidth="14" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-					</svg>
-				))}
+				<Basket size={64} />
+				TEKAN BAKUL KUNING
 			</div>
-			{/* Voucher ticket */}
-			{f >= 519 && !showStock ? (
-				<div
-					style={{
-						position: 'absolute',
-						left: 190,
-						top: ZONE_LOW.y,
-						height: ZONE_LOW.h - 6,
-						width: 700,
-						transform: `translateX(${(1 - voucher) * 500}px) rotate(${(1 - voucher) * 8}deg)`,
-						opacity: voucher,
-						display: 'flex',
-					}}
-				>
-					<div
-						style={{
-							flex: '0 0 170px',
-							background: C.red,
-							borderRadius: '20px 0 0 20px',
-							color: C.white,
-							fontFamily: anton,
-							fontSize: 58,
-							display: 'flex',
-							alignItems: 'center',
-							justifyContent: 'center',
-							borderRight: '5px dashed rgba(255,255,255,0.8)',
-						}}
-					>
-						%OFF
-					</div>
-					<div
-						style={{
-							flex: 1,
-							background: C.white,
-							borderRadius: '0 20px 20px 0',
-							display: 'flex',
-							flexDirection: 'column',
-							justifyContent: 'center',
-							paddingLeft: 26,
-							fontFamily: mont,
-							color: C.black,
-						}}
-					>
-						<div style={{fontWeight: 900, fontSize: 42, lineHeight: 1}}>CLAIM BAUCER</div>
-						<div style={{fontWeight: 700, fontSize: 24, opacity: 0.7, marginTop: 4}}>Selagi ada · tekan bakul kuning</div>
-					</div>
-				</div>
-			) : null}
-			{/* Stock running out */}
-			{showStock ? (
-				<div
-					style={{
-						position: 'absolute',
-						left: 190,
-						top: ZONE_LOW.y,
-						width: 700,
-						height: ZONE_LOW.h - 6,
-						borderRadius: 20,
-						background: 'rgba(5,8,12,0.85)',
-						border: `3px solid ${C.red}`,
-						padding: '12px 22px',
-						boxSizing: 'border-box',
-						transform: `scale(${stockIn * pulse})`,
-						opacity: stockIn,
-						boxShadow: `0 0 ${20 + 20 * (pulse - 1) * 30}px rgba(255,45,70,0.5)`,
-					}}
-				>
-					<div style={{display: 'flex', justifyContent: 'space-between', fontFamily: mont, fontWeight: 900, fontSize: 30, color: C.white}}>
-						<span>STOK HAMPIR HABIS</span>
-						<span style={{color: C.red}}>{Math.round(stock * 100)}%</span>
-					</div>
-					<div style={{marginTop: 8, height: 18, borderRadius: 9, background: 'rgba(255,255,255,0.15)', overflow: 'hidden'}}>
-						<div
-							style={{
-								width: `${stock * 100}%`,
-								height: '100%',
-								background: `linear-gradient(90deg, ${C.red}, #FF7A1F)`,
-								borderRadius: 9,
-							}}
-						/>
-					</div>
-				</div>
-			) : null}
 		</AbsoluteFill>
 	);
 };

@@ -37,7 +37,6 @@ const ZOOMS: [number, number][] = [
 	[340, 1.02], // cut: scent
 	[399, 1.08], // maskulin
 	[477, 1.12], // cut: CTA
-	[543, 1.12], // "terus beli"
 ];
 
 const useZoom = () => {
@@ -61,7 +60,7 @@ const useZoom = () => {
 
 const useShake = () => {
 	const f = useCurrentFrame();
-	const hits = [8, 43, 73, 104, 594];
+	const hits = [8, 43, 73, 104];
 	let x = 0;
 	let y = 0;
 	for (const h of hits) {
@@ -76,6 +75,8 @@ const useShake = () => {
 };
 
 type Sfx = [frame: number, name: string, vol: number];
+// Global SFX trim so effects sit clearly under the voice-over
+const SFX_GAIN = 0.55;
 const SFX: Sfx[] = [
 	[0, 'deep_whoosh', 0.35],
 	[6, 'hit', 0.45],
@@ -98,11 +99,7 @@ const SFX: Sfx[] = [
 	[399, 'pop', 0.35],
 	[430, 'pop', 0.35],
 	[447, 'pop', 0.35],
-	[474, 'whoosh', 0.4],
-	[517, 'notif', 0.45],
-	[553, 'click', 0.45],
-	[576, 'vacuum', 0.3],
-	[592, 'hit', 0.45],
+	[474, 'swoosh', 0.3],
 ];
 
 const Music: React.FC = () => {
@@ -157,7 +154,6 @@ export const BlackIce: React.FC<{showSafeZone: boolean}> = ({showSafeZone}) => {
 			<Flash at={121} color="190,240,255" strength={0.95} len={10} />
 			<Flash at={178} strength={0.35} len={4} />
 			<Flash at={340} strength={0.35} len={4} />
-			<Flash at={477} strength={0.4} len={5} />
 
 			{showSafeZone ? <SafeZoneGuide /> : null}
 
@@ -166,7 +162,7 @@ export const BlackIce: React.FC<{showSafeZone: boolean}> = ({showSafeZone}) => {
 			<Music />
 			{SFX.map(([at, name, vol], i) => (
 				<Sequence key={i} from={at} durationInFrames={Math.min(150, TOTAL - at)}>
-					<Audio src={staticFile(`sfx/${name}.wav`)} volume={vol} />
+					<Audio src={staticFile(`sfx/${name}.wav`)} volume={vol * SFX_GAIN} />
 				</Sequence>
 			))}
 		</AbsoluteFill>
