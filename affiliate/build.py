@@ -14,6 +14,7 @@ EDIT = json.loads((HERE / "src" / "edit.json").read_text())
 TOTAL = 44.4  # edited speech ends ~41.9 s, then a CTA hold
 LAST_VIDEO_END = 42.62  # let the final clip's picture run past the voice cut, then hold a still
 POSTER = (31.4837, 35.5337)  # creator's own poster, baked into the footage
+AFTER_POSTER = 35.56  # poster last frame is 35.55 (frame 2133); card shows from frame 2134
 
 # ---------------------------------------------------------------- words
 FIX = {"komision": "komisen", "RM1000": "RM1,000", "sample": "sampel", "stress,": "stres,"}
@@ -77,7 +78,7 @@ for w in words:
     if POSTER[0] - 0.05 <= w["s"] < POSTER[1] - 0.5:
         continue  # spoken over the poster: no card there
     if POSTER[1] - 0.5 <= w["s"] < POSTER[1]:
-        w = dict(w, s=POSTER[1] + 0.07)  # words just before the card returns start with it
+        w = dict(w, s=POSTER[1] + 0.1)  # words just before the card returns start with it
     visible.append(w)
 pages = paginate(visible)
 
@@ -108,13 +109,13 @@ for i, pg in enumerate(pages):
 
 # chapter tabs on the caption card
 CHAPTERS = [(0, 3.45, "RAHSIA"), (3.45, 12.55, "REALITI"), (12.55, 19.8, "PUNCA"), (19.8, 26.3, "SOLUSI"),
-            (26.3, POSTER[0], "CIRCLE"), (POSTER[1], 41.95, "BLUEPRINT")]
+            (26.3, POSTER[0], "CIRCLE"), (AFTER_POSTER, 41.95, "BLUEPRINT")]
 tabs = "\n".join(
     f'        <div id="tab{i}" class="clip tab" data-start="{a}" data-duration="{round(b - a, 4)}" data-track-index="21">'
     f'<span class="tab-dot"></span>{name}</div>'
     for i, (a, b, name) in enumerate(CHAPTERS)
 )
-card_spans = [(0, POSTER[0]), (POSTER[1], 41.95)]
+card_spans = [(0, POSTER[0]), (AFTER_POSTER, 41.95)]
 cards = "\n".join(
     f'      <div id="card{i}" class="clip capcard" data-start="{a}" data-duration="{round(b - a, 4)}" data-track-index="19"><div id="card{i}-in" class="capcard-in"></div></div>'
     for i, (a, b) in enumerate(card_spans)

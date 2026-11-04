@@ -310,8 +310,9 @@ __AUDIO__
       tl.to("#cam", { scale: 1.06, duration: 3.6, ease: "sine.inOut" }, 31.9); // slow push on the poster
 
       /* ---------- caption card ---------- */
-      tl.fromTo("#card0-in", { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.6)" }, 0);
-      tl.fromTo("#card1-in", { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.6)" }, 35.5337);
+      // the card must be fully opaque from its first frame: it hides captions burned into the footage
+      tl.fromTo("#card0-in", { opacity: 1, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 0);
+      tl.fromTo("#card1-in", { opacity: 1, scale: 1.04 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 35.56);
       const CW = __CAPWORDS__;
       CW.forEach(([sel, s, e]) => {
         const el = document.querySelector(sel);
