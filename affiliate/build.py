@@ -97,7 +97,7 @@ for i, pg in enumerate(pages):
             cls += " neg" if w["t"] in NEG else " hl"
         text = re.sub(r"[.,]$", "", w["t"])
         if w["t"] == BRAND_WORD:
-            spans.append(f'<span id="c{i}w{k}" class="{cls}" data-var-text="mcn_short">SIX</span>')
+            spans.append(f'<span id="c{i}w{k}" class="{cls}" data-var-text="mcn_short">6</span>')
         else:
             spans.append(f'<span id="c{i}w{k}" class="{cls}">{text}</span>')
         cap_js.append([f"#c{i}w{k}", round(w["s"] - LEAD, 3), round(max(w["e"], w["s"] + 0.18), 3)])

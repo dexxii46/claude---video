@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="ms" data-resolution="portrait"
   data-composition-variables='[
-    {"id":"mcn","type":"string","label":"Nama MCN (penuh)","default":"MCN OCEAN SIX"},
-    {"id":"mcn_short","type":"string","label":"Nama MCN (perkataan akhir dalam caption)","default":"SIX"},
+    {"id":"mcn","type":"string","label":"Nama MCN (penuh)","default":"MCN OCEAN 6"},
+    {"id":"mcn_short","type":"string","label":"Nama MCN (perkataan akhir dalam caption)","default":"6"},
     {"id":"handle","type":"string","label":"Handle untuk DM","default":"@eymanwongg"}
   ]'>
   <head>
@@ -205,7 +205,7 @@ __VIDEOS__
       <div id="g-brand" class="clip layer" data-start="19.75" data-duration="2.4" data-track-index="4" data-track-kind="graphics">
         <div id="b-card" class="card">
           <div id="b-join">JOIN</div>
-          <div id="b-name" data-var-text="mcn">MCN OCEAN SIX</div>
+          <div id="b-name" data-var-text="mcn">MCN OCEAN 6</div>
           <svg id="b-wave" viewBox="0 0 2220 120" preserveAspectRatio="none"><path d="M0 60 Q 92.5 20 185 60 T 370 60 T 555 60 T 740 60 T 925 60 T 1110 60 T 1295 60 T 1480 60 T 1665 60 T 1850 60 T 2035 60 T 2220 60 V 120 H 0 Z" fill="#0fb5c9" opacity="0.85"/><path d="M0 80 Q 92.5 50 185 80 T 370 80 T 555 80 T 740 80 T 925 80 T 1110 80 T 1295 80 T 1480 80 T 1665 80 T 1850 80 T 2035 80 T 2220 80 V 120 H 0 Z" fill="#6ef2e2" opacity="0.6"/></svg>
         </div>
       </div>
@@ -274,7 +274,7 @@ __VIDEOS__
       <div id="g-cta" class="clip layer" data-start="41.95" data-duration="2.45" data-track-index="4" data-track-kind="graphics">
         <div id="cta-card" class="card">
           <div id="cta-k">JOIN MY AFFILIATE TEAM</div>
-          <div id="cta-name" data-var-text="mcn">MCN OCEAN SIX</div>
+          <div id="cta-name" data-var-text="mcn">MCN OCEAN 6</div>
           <div id="cta-btn"><svg width="54" height="54" viewBox="0 0 24 24" fill="none"><path d="M21 3 L10 14 M21 3 L14 21 L10 14 L3 10 Z" stroke="#0a1a33" stroke-width="2.4" stroke-linejoin="round"/></svg><span>DM&nbsp;</span><span data-var-text="handle">@eymanwongg</span></div>
           <div id="cta-sub">Ikut blueprint · Leader guide · Circle support</div>
           <svg id="cta-wave" viewBox="0 0 2220 90" preserveAspectRatio="none"><path d="M0 45 Q 92.5 15 185 45 T 370 45 T 555 45 T 740 45 T 925 45 T 1110 45 T 1295 45 T 1480 45 T 1665 45 T 1850 45 T 2035 45 T 2220 45 V 90 H 0 Z" fill="#0fb5c9" opacity="0.7"/></svg>
