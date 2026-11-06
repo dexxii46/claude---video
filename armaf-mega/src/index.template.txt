@@ -40,9 +40,9 @@
       .ab { position: absolute; }
 
       /* subtitles: small, clean, no box */
-      .cap { z-index: 20; position: absolute; left: 110px !important; top: 1400px !important; width: 800px !important; height: 70px !important;
+      .cap { z-index: 20; position: absolute; left: 90px !important; top: 1392px !important; width: 820px !important; height: 84px !important;
         display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: nowrap; }
-      .w { font-family: var(--sans); font-weight: 600; font-size: 36px; color: var(--cream); text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85), 0 0 2px rgba(0, 0, 0, 0.9); white-space: nowrap; }
+      .w { font-family: var(--sans); font-weight: 700; font-size: 44px; color: var(--cream); text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85), 0 0 2px rgba(0, 0, 0, 0.9); white-space: nowrap; }
 
       /* G0 hook price */
       #g0-k { left: 90px; top: 268px; }
@@ -62,7 +62,7 @@
       #g2-k { left: 90px; top: 258px; }
       #g2-t { left: 90px; top: 296px; font-size: 80px; }
       #g2-lbl { left: 70px; top: 930px; width: 290px; }
-      #g2-lbl .kick { font-size: 26px; letter-spacing: 5px; }
+      #g2-lbl .kick { font-size: 28px; letter-spacing: 5px; }
       #g2-lbl .serif { font-size: 50px; margin-top: 8px; }
       #g2-svg { left: 0; top: 0; width: 1080px; height: 1920px; }
 
@@ -137,12 +137,13 @@ __VIDEOS__
       </div>
 
       <!-- G3 SCENT NOTES -->
-      <div id="g3" class="clip layer" data-start="15.95" data-duration="6.95" data-track-index="4" data-track-kind="graphics" data-layout-allow-overlap>
+      <div id="g3" class="clip layer" data-start="15.95" data-duration="8.72" data-track-index="4" data-track-kind="graphics" data-layout-allow-overlap>
         <div id="g3-k" class="ab kick">Scent notes</div>
         <div id="g3-t" class="ab serif ital">Bila sembur…</div>
         <div id="n1" class="note" style="top: 860px"><div class="note-ic"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#f7efe0" stroke-width="1.8" stroke-linecap="round"><path d="M12 7c-1.5-1.3-4.5-1.6-6 .5-1.6 2.3-.8 6.6 1.3 9.3 1.4 1.8 2.9 2 4.7 1.2 1.8.8 3.3.6 4.7-1.2 2.1-2.7 2.9-7 1.3-9.3-1.5-2.1-4.5-1.8-6-.5z"/><path d="M12 7c0-2 1-3.5 2.5-4"/></svg></div><div><small>01</small><div class="serif ital">Apple</div></div></div>
         <div id="n2" class="note" style="top: 990px"><div class="note-ic"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#f7efe0" stroke-width="1.8" stroke-linecap="round"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg></div><div><small>02</small><div class="serif ital">Fresh</div></div></div>
         <div id="n3" class="note" style="top: 1120px"><div class="note-ic"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#f7efe0" stroke-width="1.8" stroke-linecap="round"><path d="M20 4C10 4 5 10 5 19"/><path d="M20 4c0 8-5 13-13 14"/><path d="M9 15l5-5"/></svg></div><div><small>03</small><div class="serif ital">Masculine<br/>powdery</div></div></div>
+        <div id="n4" class="ab" style="left: 74px; top: 1286px"><span class="kick" style="font-size: 28px; letter-spacing: 5px">✦ Macam Y EDP</span></div>
         <div class="mote" id="m1" style="left: 620px; top: 700px"></div>
         <div class="mote" id="m2" style="left: 680px; top: 760px"></div>
         <div class="mote" id="m3" style="left: 560px; top: 740px"></div>
@@ -152,13 +153,13 @@ __VIDEOS__
       </div>
 
       <!-- G4 EVERYDAY -->
-      <div id="g4" class="clip layer" data-start="22.95" data-duration="2.5" data-track-index="4" data-track-kind="graphics">
+      <div id="g4" class="clip layer" data-start="24.72" data-duration="2.5" data-track-index="4" data-track-kind="graphics">
         <div id="g4-k" class="ab kick">Paling best</div>
         <div id="g4-t" class="ab serif ital">Pakai harian</div>
       </div>
 
       <!-- G5 SHOP -->
-      <div id="g5" class="clip layer" data-start="25.5" data-duration="2.85" data-track-index="4" data-track-kind="graphics">
+      <div id="g5" class="clip layer" data-start="27.27" data-duration="2.85" data-track-index="4" data-track-kind="graphics">
         <div id="g5-k" class="ab kick">Harga mesra</div>
         <div id="g5-t" class="ab serif ital">Murah je</div>
         <div id="g5-lbl" class="ab"><div class="kick">Tekan</div><div class="serif ital">beg kuning</div></div>
@@ -166,7 +167,7 @@ __VIDEOS__
       </div>
 
       <!-- G6 SIANG & MALAM -->
-      <div id="g6" class="clip layer" data-start="28.4" data-duration="2.25" data-track-index="4" data-track-kind="graphics">
+      <div id="g6" class="clip layer" data-start="30.17" data-duration="2.25" data-track-index="4" data-track-kind="graphics">
         <div id="g6-row" class="ab">
           <svg id="g6-sun" class="g6-ic" viewBox="0 0 24 24" fill="none" stroke="#f2c230" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
           <div id="g6-a" class="serif ital">Siang</div>
@@ -177,7 +178,7 @@ __VIDEOS__
       </div>
 
       <!-- G7 END CARD -->
-      <div id="g7" class="clip layer" data-start="30.4" data-duration="2.2" data-track-index="4" data-track-kind="graphics">
+      <div id="g7" class="clip layer" data-start="32.45" data-duration="2.25" data-track-index="4" data-track-kind="graphics">
         <div id="g7-card" class="ab">
           <div id="g7-k">EAU DE PARFUM · 100 ML</div>
           <div id="g7-n" data-var-text="name">Odyssey Mega</div>
@@ -202,9 +203,9 @@ __AUDIO__
 
       /* ---------- camera: slow luxury push, gentle steps on key words ---------- */
       tl.fromTo("#cam", { scale: 1.12 }, { scale: 1.04, duration: 2.4, ease: "sine.out" }, 0);
-      const Z = [[2.43, 1.0], [5.6, 1.04], [9.82, 1.0], [12.32, 1.06], [15.93, 1.0], [19.08, 1.04], [22.93, 1.0], [25.48, 1.03], [28.4, 1.0], [30.6, 1.04]];
+      const Z = [[2.43, 1.0], [5.6, 1.04], [9.82, 1.0], [12.32, 1.06], [15.93, 1.0], [19.08, 1.04], [24.70, 1.0], [27.25, 1.03], [30.17, 1.0], [32.37, 1.04]];
       Z.forEach(([t, s]) => tl.to("#cam", { scale: s, duration: 0.9, ease: "power3.out" }, t));
-      tl.to("#cam", { scale: 1.07, duration: 2.0, ease: "sine.inOut" }, 30.6);
+      tl.to("#cam", { scale: 1.07, duration: 2.0, ease: "sine.inOut" }, 32.37);
 
       /* ---------- subtitles ---------- */
       const CW = __CAPWORDS__;
@@ -246,32 +247,33 @@ __AUDIO__
       [["#n1", 19.0], ["#n2", 20.06], ["#n3", 21.8]].forEach(([n, t]) => rise(n, t, 0.7, { x: -40, y: 0 }));
       ["#m1", "#m2", "#m3", "#m4", "#m5", "#m6"].forEach((m, i) =>
         tl.fromTo(m, { opacity: 0, y: 0, x: 0, scale: 0.4 }, { keyframes: [{ opacity: 0.9, scale: 1, duration: 0.6 }, { opacity: 0, y: -260 - i * 30, x: (i % 2 ? 40 : -40), duration: 2.6 }], ease: "sine.out" }, 16.2 + i * 0.35));
-      fade(["#g3-k", "#g3-t", "#n1", "#n2", "#n3"], 22.65);
+      rise("#n4", 23.45, 0.6, { x: -30, y: 0 });
+      fade(["#g3-k", "#g3-t", "#n1", "#n2", "#n3", "#n4"], 24.5);
 
       /* ---------- G4 everyday ---------- */
-      rise("#g4-k", 23.0);
-      tl.fromTo("#g4-t", { opacity: 0, y: 40, clipPath: "inset(0 100% 0 0)" }, { opacity: 1, y: 0, clipPath: "inset(0 0% 0 0)", duration: 0.8, ease: "expo.out" }, 24.55);
-      fade(["#g4-k", "#g4-t"], 25.2);
+      rise("#g4-k", 24.77);
+      tl.fromTo("#g4-t", { opacity: 0, y: 40, clipPath: "inset(0 100% 0 0)" }, { opacity: 1, y: 0, clipPath: "inset(0 0% 0 0)", duration: 0.8, ease: "expo.out" }, 26.32);
+      fade(["#g4-k", "#g4-t"], 26.97);
 
       /* ---------- G5 shop ---------- */
-      rise("#g5-k", 25.55);
-      tl.fromTo("#g5-t", { opacity: 0, y: 40, clipPath: "inset(0 100% 0 0)" }, { opacity: 1, y: 0, clipPath: "inset(0 0% 0 0)", duration: 0.7, ease: "expo.out" }, 27.35);
-      rise("#g5-lbl", 26.75, 0.5, { x: -30, y: 0 });
-      draw("#g5-arrow", 26.9, 0.7);
-      fade(["#g5-k", "#g5-t", "#g5-lbl", "#g5-svg"], 28.1);
+      rise("#g5-k", 27.32);
+      tl.fromTo("#g5-t", { opacity: 0, y: 40, clipPath: "inset(0 100% 0 0)" }, { opacity: 1, y: 0, clipPath: "inset(0 0% 0 0)", duration: 0.7, ease: "expo.out" }, 29.12);
+      rise("#g5-lbl", 28.52, 0.5, { x: -30, y: 0 });
+      draw("#g5-arrow", 28.67, 0.7);
+      fade(["#g5-k", "#g5-t", "#g5-lbl", "#g5-svg"], 29.87);
 
       /* ---------- G6 siang & malam ---------- */
-      tl.fromTo("#g6-sun", { opacity: 0, rotation: -90, scale: 0.5 }, { opacity: 1, rotation: 0, scale: 1, duration: 0.6, ease: "back.out(2)" }, 29.5);
-      rise("#g6-a", 29.55, 0.5);
-      rise("#g6-amp", 29.85, 0.4);
-      rise("#g6-b", 29.98, 0.5);
-      tl.fromTo("#g6-moon", { opacity: 0, rotation: 60, scale: 0.5 }, { opacity: 1, rotation: 0, scale: 1, duration: 0.6, ease: "back.out(2)" }, 30.0);
-      fade("#g6-row", 30.45, 0.18);
+      tl.fromTo("#g6-sun", { opacity: 0, rotation: -90, scale: 0.5 }, { opacity: 1, rotation: 0, scale: 1, duration: 0.6, ease: "back.out(2)" }, 31.27);
+      rise("#g6-a", 31.32, 0.5);
+      rise("#g6-amp", 31.62, 0.4);
+      rise("#g6-b", 31.75, 0.5);
+      tl.fromTo("#g6-moon", { opacity: 0, rotation: 60, scale: 0.5 }, { opacity: 1, rotation: 0, scale: 1, duration: 0.6, ease: "back.out(2)" }, 31.77);
+      fade("#g6-row", 32.22, 0.18);
 
       /* ---------- G7 end card ---------- */
-      tl.fromTo("#g7-card", { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 30.42);
-      tl.fromTo("#g7-n", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.8, ease: "expo.out" }, 30.55);
-      tl.to("#g7-dot", { keyframes: [{ scale: 1.6 }, { scale: 1 }, { scale: 1.6 }, { scale: 1 }], duration: 1.6, ease: "sine.inOut" }, 31.0);
+      tl.fromTo("#g7-card", { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 32.47);
+      tl.fromTo("#g7-n", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.8, ease: "expo.out" }, 32.6);
+      tl.to("#g7-dot", { keyframes: [{ scale: 1.6 }, { scale: 1 }, { scale: 1.6 }, { scale: 1 }], duration: 1.6, ease: "sine.inOut" }, 33.0);
 
       tl.set({}, {}, TOTAL);
       window.__timelines = window.__timelines || {};

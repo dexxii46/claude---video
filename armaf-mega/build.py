@@ -13,7 +13,7 @@ import subprocess
 HERE = pathlib.Path(__file__).parent
 EDIT = json.loads((HERE / "src" / "edit.json").read_text())
 RAW = json.loads((HERE / "src" / "words_raw.json").read_text())
-TOTAL = 32.6          # must stay under 35 s
+TOTAL = 34.7          # must stay under 35 s
 SPEECH_END = EDIT["edited"]  # 30.6
 HOOK_VISUAL_SRC = 22.3  # cap/logo spin; that stretch's own audio (the comparison line) was cut
 
@@ -31,7 +31,7 @@ videos = "\n".join(
     for i, v in enumerate(video_segs))
 
 # ---------------------------------------------------------------- caption words
-FIX = {"Odissi": "Odyssey", "RM100ml": "100ML", "perimah": "premium", "sembuh": "sembur", "powder": "powdery"}
+FIX = {"primih": "premium", "bag": "beg", "YEDP": "Y EDP", "Odissi": "Odyssey", "RM100ml": "100ML", "perimah": "premium", "sembuh": "sembur", "powder": "powdery"}
 cuts = [a["at"] for a in aud]
 words = []
 for x in RAW:
@@ -50,8 +50,8 @@ for x in RAW:
     words.append(dict(t=t, s=round(s, 3), e=round(e, 3)))
 
 HL = {"rm200", "odyssey", "mega", "armaf", "100ml", "premium", "leather", "casing", "apple", "fresh,", "fresh",
-      "masculine", "powdery", "harian", "kuning", "murah", "siang", "malam"}
-BREAK_AFTER = {"terbaru", "armaf", "100ml", "premium", "ni", "apple", "powdery", "ok", "beli", "lah"}
+      "masculine", "powdery", "y edp", "harian", "kuning", "murah", "siang", "malam"}
+BREAK_AFTER = {"tau", "terbaru", "armaf", "100ml", "premium", "ni", "apple", "powdery", "ok", "beli", "lah"}
 
 
 def paginate(ws, max_chars=30):
@@ -94,8 +94,8 @@ SFX_GAIN = 0.35  # effects always sit well under the voice
 SFX = [
     (0.0, "air", 0.35), (1.38, "coins", 0.4), (2.43, "page", 0.5), (5.6, "sparkle", 0.3), (8.44, "tick", 0.5),
     (11.0, "glow", 0.3), (12.32, "select", 0.4), (15.93, "wind", 0.4), (19.08, "bubble", 0.45), (20.14, "bubble", 0.45),
-    (21.86, "chime", 0.35), (22.93, "page", 0.5), (24.68, "tick", 0.5), (25.5, "paper", 0.4), (26.86, "msg", 0.4),
-    (27.44, "coins", 0.35), (29.6, "tick", 0.45), (30.04, "tick", 0.45), (30.65, "positive", 0.35),
+    (21.86, "chime", 0.35), (23.86, "glow", 0.25), (24.70, "page", 0.5), (26.45, "tick", 0.5), (27.27, "paper", 0.4), (28.63, "msg", 0.4),
+    (29.21, "coins", 0.35), (31.37, "tick", 0.45), (31.81, "tick", 0.45), (32.47, "positive", 0.35),
 ]
 audio = [
     f'    <audio id="vo" src="assets/voice.wav" data-start="0" data-duration="{TOTAL}" data-volume="1" data-track-index="1"></audio>',
